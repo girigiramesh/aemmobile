@@ -2,9 +2,9 @@
 	"remoteBinaryVersionsUrl": "https://mobile-devtools.aemmobile.adobe.com/versions.json",
 	"platforms": {
 		"android": {
-			"releases_url": "https://api.github.com/repos/adobe-marketing-cloud-mobile/aemm-android/releases",
-			"repo_url": "https://github.com/adobe-marketing-cloud-mobile/aemm-android.git",
-			"version": "^6.0.0"
+			"releases_url": "https://api.github.com/repos/girigiramesh/aemm-android/releases",
+			"repo_url": "https://github.com/girigiramesh/aemm-android.git",
+			"version": "^7.0.0"
 		},
 		"ios": {
 			"releases_url": "https://api.github.com/repos/adobe-marketing-cloud-mobile/aemm-ios/releases", 
