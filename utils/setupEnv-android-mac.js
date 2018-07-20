@@ -34,7 +34,7 @@ function setEnvVariables() {
 }
 
 function setAndroid_Home() {
-    var android_home = path.join(getUserHome(), 'platforms/android/sdk');
+    var android_home = path.join(getUserHome(), 'Library/Android/sdk');
 
     return isEnvVariableSet("ANDROID_HOME", android_home)
         .then( (code) => {
@@ -46,10 +46,10 @@ function setAndroid_Home() {
 }
 
 function setPaths() {
-    var tools_path = path.join(getUserHome(), 'platforms/android/sdk/tools');
+    var tools_path = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:" + getUserHome() + "/Library/Android/sdk/platform-tools" + ":" + getUserHome() + '/platforms/android/sdk/tools' + ":" + getUserHome() + '/Library/Android/sdk/tools';
     return setPath(tools_path)
         .then ( () => {
-            var platformtools_path = path.join(getUserHome(), 'platforms/android/sdk/platform-tools');
+            var platformtools_path = path.join(getUserHome(), 'Library/Android/sdk/platform-tools');
             return setPath(platformtools_path);
         });
 }
@@ -57,8 +57,8 @@ function setPaths() {
 function setPath(path) {
     return isEnvVariableSet("Path", path)
         .then( (code) => {
-            var path_value = "${PATH}:" + path;
-            return setEnvVariable("Path", path_value);
+//            var path_value = "${PATH}:" + path;
+            return setEnvVariable("Path", path);
         });
 }
 
