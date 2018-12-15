@@ -46,19 +46,21 @@ function setAndroid_Home() {
 }
 
 function setPaths() {
-    var tools_path = path.join(getUserHome(), 'platforms/android/sdk/tools');
+    var platform_tools = "/platforms/android/sdk/platform-tools";
+    var tools = "/platforms/android/sdk/tools";
+    var platform_tools_path = "${PATH}:" + getUserHome() + platform_tools + ":" + getUserHome() + tools + ":" + getUserHome();
+    var tools_path = platform_tools_path + '/platforms/android/sdk/tools';
     return setPath(tools_path)
         .then ( () => {
-            var platformtools_path = path.join(getUserHome(), 'platforms/android/sdk/platform-tools');
+            var platformtools_path = platform_tools_path + platform_tools;
             return setPath(platformtools_path);
         });
 }
 
 function setPath(path) {
-    return isEnvVariableSet("Path", path)
+    return isEnvVariableSet("PATH", path)
         .then( (code) => {
-            var path_value = "${PATH}:" + path;
-            return setEnvVariable("Path", path_value);
+            return setEnvVariable("PATH", path);
         });
 }
 
@@ -89,6 +91,6 @@ function setEnvVariable(name, value) {
             deferred.resolve();
         }
     });
-    
+
     return deferred.promise;
 }
